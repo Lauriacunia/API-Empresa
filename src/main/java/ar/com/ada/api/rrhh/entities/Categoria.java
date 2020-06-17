@@ -21,6 +21,11 @@ public class Categoria {
     @Column( name = "sueldo_base")
     private BigDecimal sueldoBase;
 
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Empleado> empleados = new ArrayList<>();
+
     public int getCategoriaId() {
         return categoriaId;
     }

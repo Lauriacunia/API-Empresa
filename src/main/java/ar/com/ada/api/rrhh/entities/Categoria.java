@@ -1,13 +1,21 @@
 package ar.com.ada.api.rrhh.entities;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.*;
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 
 @Entity
 @Table(name = "categoria")
@@ -21,7 +29,7 @@ public class Categoria {
     @Column( name = "sueldo_base")
     private BigDecimal sueldoBase;
 
-
+    //"categoria" es el nombre del atributo en la clase empleadp
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Empleado> empleados = new ArrayList<>();
@@ -48,6 +56,14 @@ public class Categoria {
 
     public void setSueldoBase(BigDecimal sueldoBase) {
         this.sueldoBase = sueldoBase;
+    }
+
+    public List<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
     }
     
 

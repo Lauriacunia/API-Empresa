@@ -22,7 +22,7 @@ public class Empleado {
   private int edad;
   private BigDecimal sueldo;
   @Column(name = "estado_id")
-  private int estado;
+  private int estadoId;
   @Column(name = "fecha_alta")
   private Date fechaAlta;
   @Column(name = "fecha_baja")
@@ -64,13 +64,6 @@ public class Empleado {
     this.sueldo = sueldo;
   }
 
-  public int getEstado() {
-    return estado;
-  }
-
-  public void setEstado(int estado) {
-    this.estado = estado;
-  }
 
   public Date getFechaAlta() {
     return fechaAlta;
@@ -94,6 +87,14 @@ public class Empleado {
 
   public void setCategoria(Categoria categoria) {
     this.categoria = categoria;
+  }
+
+  public int getEstadoId() {
+    return estadoId;
+  }
+
+  public void setEstadoId(int estadoId) {
+    this.estadoId = estadoId;
   }
 
 }

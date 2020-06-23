@@ -1,46 +1,62 @@
 package ar.com.ada.api.rrhh.services;
 
-import java.util.List;
-import java.util.Optional;
+import java.math.BigDecimal;
+import java.util.*;
 
-import javax.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.rrhh.entities.Empleado;
+import ar.com.ada.api.rrhh.models.requests.SueldoInfoRequest;
 import ar.com.ada.api.rrhh.repos.EmpleadoRepository;
 
 @Service
 public class EmpleadoService {
 
-@Autowired
-EmpleadoRepository empleadoRepository;
+    @Autowired
+    EmpleadoRepository empleadoRepository;
 
-public void crearEmpleado(Empleado empleado){
-    
-    empleadoRepository.save(empleado);
+    public void crearEmpleado(Empleado empleado){
 
-}
+        empleadoRepository.save(empleado);
+    }
 
-public List<Empleado> listarEmpleados(){
+    public List<Empleado> listarEmpleados(){
+        
+        return empleadoRepository.findAll();
+    }
 
-    return empleadoRepository.findAll();
-}
+    public Empleado traerEmpledoPorId(int empleadoId){ 
+       
+        Optional<Empleado> eo = empleadoRepository.findById(empleadoId);
 
-// traer empledos por id
+        if(eo.isPresent()){
+            
+            return eo.get();
+        }
+        return null;
+    }
 
-public Empleado traerEmpleadoPorId(int empleadoId){
+    public void actualizarSueldoEmpleado(Empleado empleadoOriginal, BigDecimal sueldo){
 
-    Optional<Empleado> optionalEmpleado = empleadoRepository.findById(empleadoId); ///devuelve un objeto optional, que puede estar o no, por eso tengo que crear un objeto Optional
-    
-    if(optionalEmpleado.isPresent()) {
+        empleadoOriginal.setSueldo(sueldo);
 
-        return optionalEmpleado.get(); // retorna un empleado
+        empleadoRepository.save(empleadoOriginal);
 
     }
-    return null;
-}
+
+    public void actualizarEstado(Empleado empleado,int estadoId){
+
+        empleado.setEstadoId(estadoId);
+
+        empleadoRepository.save(empleado);
+    }
+
+    public void borrarEmpleado(Empleado empleado){
+
+        this.actualizarEstado(empleado, 0);
+
+    }
+
+
 }

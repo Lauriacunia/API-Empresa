@@ -38,6 +38,7 @@ public class EmpleadoController {
         empleado.setCategoria(categoriaService.buscarCategoriaPorId(info.categoriaId));
         empleado.setFechaAlta(new Date());
         empleado.setEstadoId(1);
+
         empleadoService.crearEmpleado(empleado);
         
         GenericResponse resp = new GenericResponse();
@@ -70,7 +71,7 @@ public class EmpleadoController {
     }
 
     @PutMapping("/empleados/{id}/sueldos")
-    public ResponseEntity<?> actualizarSueldoEmpleado(@PathVariable int id,@RequestBody SueldoInfoRequest infoNueva){
+    public ResponseEntity<?> actualizarSueldoEmpleado(@PathVariable int id, @RequestBody SueldoInfoRequest infoNueva){
 
         Empleado empleadoOriginal = empleadoService.traerEmpledoPorId(id);
 

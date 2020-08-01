@@ -1,6 +1,36 @@
-# API-Empresa
-Challenge realizado durante la cursada de AdaITW con SprigBoot. Objetivo:  CRUD de "Empleados" de una empresa, y Deploy con Heroku. 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/63796774/89105132-f38ff400-d3f4-11ea-9825-78c604cac2b6.png">
+</p>
 
-Documentacion en: https://documenter.getpostman.com/view/11716574/T1Dngcpy
+## Funcionalidad
+- [x] Crear un empleado
+- [x] Crear una categoria
+- [x] Buscar empleado por Id
+- [x] Listar Todos los empleados
+- [x] Listar Todas las categorias
+- [x] Actualizar sueldo de un empleado
+- [x] Deleteo lógico de un empleado
 
-Deploy en: https://empresalau.herokuapp.com/
+# Documentación
+
+[Conocé todo lo que podés hacer con ésta API](https://documenter.getpostman.com/view/11716574/T1Dngcpy)
+
+# Deployment
+
+[Deploy en Heroku](https://empresalau.herokuapp.com/)
+
+
+## Construído con…
+- [x] JAVA
+- [x] Springboot
+- [x] Posgres
+- [x] Heroku
+
+
+
+
+
+
+
+
+
